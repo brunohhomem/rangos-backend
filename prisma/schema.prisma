@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum FoodSource {
+  TACO
+  CUSTOM
+}
+
 model User {
   id        Int      @id @default(autoincrement())
   email     String   @unique
@@ -16,3 +21,36 @@ model User {
 
   @@map("users")
 }
+
+model Food {
+  id           Int        @id @default(autoincrement())
+  food         String
+  foodSource   FoodSource @map("food_source")
+  calories     Float
+  carbohydrate Float
+  protein      Float
+  lipids       Float
+  cholesterol  Float
+  fiber        Float
+  isVeg        Boolean    @default(false) @map("is_veg")
+  isVegan      Boolean    @default(false) @map("is_vegan")
+  createdAt    DateTime   @default(now()) @map("created_at")
+  isActive     Boolean    @default(true) @map("is_active")
+
+  @@map("foods")
+}
+
+// model Supplement {
+//   id             Int      @id @default(autoincrement())
+//   supplement           String
+//   createdAt      DateTime @default(now()) @map("created_at")
+//   isActive       Boolean  @default(true) @map("is_active")
+//   carbohydrate   Float
+//   protein        Float
+//   lipids         Float
+//   hasCholesterol Boolean  @default(false) @map("has_cholesterol")
+//   isVeg          Boolean  @default(false) @map("is_veg")
+//   isVegan        Boolean  @default(false) @map("is_vegan")
+
+//   @@map("supplements")
+// }
