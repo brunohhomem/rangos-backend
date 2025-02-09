@@ -25,6 +25,7 @@ async function seed() {
       data: {
         email: 'bruno@email.com',
         name: 'brunohhomem',
+        password: '',
       },
     });
   }

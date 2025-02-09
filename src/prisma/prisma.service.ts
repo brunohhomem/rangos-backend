@@ -1,4 +1,9 @@
-import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import {
+  INestApplication,
+  Injectable,
+  OnModuleDestroy,
+  OnModuleInit,
+} from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
 @Injectable()
@@ -22,7 +27,7 @@ export class PrismaService
     console.log('📴 Desconectado do banco de dados');
   }
 
-  enableShutdownHooks(app: any) {
+  enableShutdownHooks(app: INestApplication) {
     app.enableShutdownHooks();
   }
 }
