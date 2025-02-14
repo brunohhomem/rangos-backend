@@ -1,10 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { FoodSource } from '@prisma/client';
+import { FoodSource, PrismaClient } from '@prisma/client';
 import * as path from 'path';
-import { PrismaService } from 'src/prisma/prisma.service';
 import * as xlsx from 'xlsx';
 
-const prisma = new PrismaService();
+const prisma = new PrismaClient();
 
 type ExcelFoodData = {
   food: string;

@@ -6,7 +6,3 @@
 <https://medium.com/@highlanderfullstack/como-criar-sistema-de-autentica%C3%A7%C3%A3o-com-jwt-usando-nestjs-e-prisma-a053e2268901>
 <https://fabricadesinapse.gitbook.io/sinapse-book/nestjs/autenticacao-sistema-de-login-com-token-jwt>
 
-  // "prisma": {
-  //   "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-  // },
-  
