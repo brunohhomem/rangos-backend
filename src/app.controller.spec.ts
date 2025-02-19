@@ -3,7 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 describe('AppController', () => {
-  let controller: AppController;
+  let appController: AppController;
 
   const mockAppService = {
     getHealthCheck: jest.fn(),
@@ -20,7 +20,7 @@ describe('AppController', () => {
       ],
     }).compile();
 
-    controller = module.get<AppController>(AppController);
+    appController = module.get<AppController>(AppController);
   });
 
   beforeEach(() => {
@@ -28,11 +28,11 @@ describe('AppController', () => {
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(appController).toBeDefined();
   });
 
   it('getHealthCheck', async () => {
-    await controller.getHealthCheck();
+    await appController.getHealthCheck();
 
     expect(mockAppService.getHealthCheck).toHaveBeenCalledTimes(1);
     expect(mockAppService.getHealthCheck).toHaveBeenCalledWith();
