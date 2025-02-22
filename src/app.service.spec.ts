@@ -27,7 +27,7 @@ describe('AppService', () => {
     jest.resetAllMocks();
   });
 
-  it('Shouldbe defined', () => {
+  it('Should be defined', () => {
     expect(appService).toBeDefined();
   });
 
