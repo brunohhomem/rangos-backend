@@ -88,7 +88,7 @@ describe('AuthService', () => {
         id: 1,
         email: 'butters@email.com',
         name: 'Butters',
-        password: 'sacheDe@Atum2', // Adicione esta linha
+        password: 'sacheDe@Atum2',
       };
 
       const result = authService.login(mockUser);
