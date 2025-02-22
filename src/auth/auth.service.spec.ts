@@ -10,21 +10,25 @@ describe('AuthService', () => {
   let userService: UserService;
   let jwtService: JwtService;
 
+  const mockUserService = {
+    findByEmail: jest.fn(),
+  };
+
+  const mockJwtService = {
+    sign: jest.fn().mockReturnValue('mocked_jwt_token'),
+  };
+
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [
         AuthService,
         {
           provide: UserService,
-          useValue: {
-            findByEmail: jest.fn(),
-          },
+          useValue: mockUserService,
         },
         {
           provide: JwtService,
-          useValue: {
-            sign: jest.fn().mockReturnValue('mocked_jwt_token'),
-          },
+          useValue: mockJwtService,
         },
       ],
     }).compile();
@@ -44,9 +48,9 @@ describe('AuthService', () => {
     it('should return user without password when credentials are correct', async () => {
       const mockUser = {
         id: 1,
-        email: 'test@example.com',
-        name: 'Test User',
-        password: await bcrypt.hash('password123', 10),
+        email: 'butters@email.com',
+        name: 'Butters',
+        password: await bcrypt.hash('sacheDe@Atum2', 10),
         createdAt: new Date(),
         isActive: true,
       };
@@ -61,8 +65,8 @@ describe('AuthService', () => {
 
       expect(result).toEqual({
         id: 1,
-        email: 'test@example.com',
-        name: 'Test User',
+        email: 'butters@email.com',
+        name: 'Butters',
         password: undefined,
         createdAt: expect.any(Date),
         isActive: true,
@@ -82,9 +86,9 @@ describe('AuthService', () => {
     it('should generate a valid JTW token', () => {
       const mockUser = {
         id: 1,
-        email: 'test@example.com',
-        name: 'Test',
-        password: 'hashedpassword123', // Adicione esta linha
+        email: 'butters@email.com',
+        name: 'Butters',
+        password: 'sacheDe@Atum2', // Adicione esta linha
       };
 
       const result = authService.login(mockUser);
@@ -93,8 +97,8 @@ describe('AuthService', () => {
       // eslint-disable-next-line @typescript-eslint/unbound-method
       expect(jwtService.sign).toHaveBeenCalledWith({
         sub: 1,
-        email: 'test@example.com',
-        name: 'Test',
+        email: 'butters@email.com',
+        name: 'Butters',
       });
     });
   });
