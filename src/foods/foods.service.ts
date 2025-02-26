@@ -25,7 +25,7 @@ export class FoodsService {
     });
   }
 
-  findByFood(
+  findFoods(
     food: string,
     page: number = 1,
     pageSize: number = 10,

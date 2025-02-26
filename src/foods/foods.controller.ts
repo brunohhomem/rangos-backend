@@ -26,7 +26,7 @@ export class FoodsController {
   }
 
   @Get('food')
-  async getFoods(
+  async findFoods(
     @Query('search') search: string,
     @Query('page') page: string = '1',
     @Query('pageSize') pageSize: string = '10',
@@ -35,7 +35,7 @@ export class FoodsController {
     @Query('isVeg') isVeg?: string,
     @Query('isVegan') isVegan?: string,
   ) {
-    return await this.foodsService.findByFood(
+    return await this.foodsService.findFoods(
       search || '',
       Number(page),
       Number(pageSize),
